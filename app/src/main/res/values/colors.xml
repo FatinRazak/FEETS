@@ -6,8 +6,10 @@
     <color name="white">#FFF</color>
     <color name="black">#000</color>
     <color name="transparent">#00ffffff</color>
-    <color name="StartColor3in30">#c8208be9</color>
-    <color name="EndColor3in30">#c833ace1</color>
+    <color name="StartColor3in30Opacity">#c8208be9</color>
+    <color name="EndColor3in30Opacity">#c833ace1</color>
+    <color name="StartColor3in30">#208be9</color>
+    <color name="EndColor3in30">#33ace1</color>
     <color name="blackRoundedColorOpacity10">#1e000000</color>
 
 </resources>

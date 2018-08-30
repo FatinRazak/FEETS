@@ -9,6 +9,13 @@
     <include layout="@layout/tool_bar"
         android:id="@+id/toolbar"></include>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="-50dp"
+        android:layout_below="@id/tabs_campaign"
+        android:background="@drawable/blue_gradient_roundedbg_3in30" />
+
     <android.support.design.widget.TabLayout
         android:id="@+id/tabs_campaign"
         android:layout_width="match_parent"
@@ -37,6 +44,7 @@
             android:text="@string/tab2campaign" />
 
     </android.support.design.widget.TabLayout>
+
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
