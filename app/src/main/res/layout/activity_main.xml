@@ -33,7 +33,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/blue_gradient_bg_3in30" />
+            android:background="@drawable/blue_gradientopacitybg_3in30" />
     </FrameLayout>
 
     <GridLayout
