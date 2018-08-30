@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">FEET\'S</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_highfive">Highfive</string>
+    <string name="title_ting">T\'ing!</string>
+    <string name="title_feeters">Feeters</string>
+    <string name="title_makanbuddy">Makan Buddy</string>
+    <string name="tab1main">Challenges</string>
+    <string name="tab2main">Feed</string>
+    <string name="tab3main">Announcement</string>
+    <string name="chat">Chat</string>
+    <string name="noti">Notification</string>
+    <string name="home">Home</string>
+    <string name="highfive">Highfive</string>
+    <string name="ting">T\'ing!</string>
+    <string name="feeters">Feeters</string>
+    <string name="makanbuddy">Makan Buddy</string>
+    <string name="rank">Rank</string>
+    <string name="score">Score</string>
+    <string name="tab1campaign">3 in 30</string>
+    <string name="tab2campaign">Leaderboard</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_3in30">Hello 3 in 30</string>
+    <string name="hello_3in30_leaderboard">Hello 3 in 30 Leaderboard</string>
+
+</resources>

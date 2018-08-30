@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CampaignActivity">
+
+    <include layout="@layout/tool_bar"
+        android:id="@+id/toolbar"></include>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabs_campaign"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabTextAppearance="@style/TabText"
+        app:tabMode="fixed"
+        app:tabGravity="fill"
+        android:background="@drawable/blue_gradient_bg_3in30"
+        app:tabIndicatorColor="@color/white"
+        android:layout_alignParentStart="true"
+        app:tabSelectedTextColor="@color/white"
+        android:layout_below="@id/toolbar"
+        android:layout_alignParentLeft="true">
+
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/tab3in30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tab1campaign" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/tab3in30Leaderboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tab2campaign" />
+
+    </android.support.design.widget.TabLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_below="@id/tabs_campaign"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/navigation_highfive"
+        android:icon="@drawable/ic_highfive"
+        android:title="@string/highfive" />
+
+    <item
+        android:id="@+id/navigation_ting"
+        android:icon="@drawable/ic_ting"
+        android:title="@string/ting" />
+
+    <item
+        android:id="@+id/navigation_feeters"
+        android:icon="@drawable/ic_feeters"
+        android:title="@string/feeters" />
+
+    <item
+        android:id="@+id/navigation_makanbuddy"
+        android:icon="@drawable/ic_makanbuddy"
+        android:title="@string/makanbuddy" />
+
+</menu>
