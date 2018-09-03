@@ -6,15 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".CampaignActivity">
 
-    <include layout="@layout/tool_bar"
-        android:id="@+id/toolbar"></include>
+    <include layout="@layout/toolbar_3in30"
+        android:id="@+id/toolbar_campaign"></include>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="-50dp"
-        android:layout_below="@id/tabs_campaign"
-        android:background="@drawable/blue_gradient_roundedbg_3in30" />
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/whiteOvalBg"-->
+        <!--android:background="@drawable/shadow"/>-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/whiteOvalBg"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="250dp"-->
+        <!--android:layout_marginTop="-75dp"-->
+        <!--android:layout_below="@id/tabs_campaign"-->
+        <!--android:background="@color/white" />-->
+
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="150dp"-->
+        <!--android:layout_marginTop="-75dp"-->
+        <!--android:layout_below="@id/tabs_campaign"-->
+        <!--android:background="@drawable/blue_gradient_roundedbg_3in30" />-->
+
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/tabs_campaign"-->
+        <!--android:background="@drawable/shadow"/>-->
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tabs_campaign"
@@ -25,9 +45,10 @@
         app:tabGravity="fill"
         android:background="@drawable/blue_gradient_bg_3in30"
         app:tabIndicatorColor="@color/white"
+        app:tabIndicatorHeight="3dp"
         android:layout_alignParentStart="true"
         app:tabSelectedTextColor="@color/white"
-        android:layout_below="@id/toolbar"
+        android:layout_below="@id/toolbar_campaign"
         android:layout_alignParentLeft="true">
 
 

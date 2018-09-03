@@ -2,14 +2,20 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#ffe25b</color>
+
     <color name="white">#FFF</color>
     <color name="black">#000</color>
     <color name="transparent">#00ffffff</color>
+    <color name="darkGrey">#2E2E2E</color>
+    <color name="darkGreyOpacity">#dc2e2e2e</color>
+    <color name="lightGrey">#A4A4A4</color>
+
     <color name="StartColor3in30Opacity">#c8208be9</color>
     <color name="EndColor3in30Opacity">#c833ace1</color>
     <color name="StartColor3in30">#208be9</color>
     <color name="EndColor3in30">#33ace1</color>
     <color name="blackRoundedColorOpacity10">#1e000000</color>
+    <color name="flameOrange">#FE7A2E</color>
 
 </resources>

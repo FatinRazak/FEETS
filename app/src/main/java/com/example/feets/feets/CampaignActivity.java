@@ -25,10 +25,9 @@ public class CampaignActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_campaign);
 
-        mtoolbar = (Toolbar) findViewById(R.id.toolbar);
+        mtoolbar = (Toolbar) findViewById(R.id.toolbar_campaign);
         mtoolbar.setTitle("Kick-Start Campaign");
         setSupportActionBar(mtoolbar);
-        mtoolbar.setBackgroundColor(Color.parseColor("#c8208be9"));
         mtoolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
 
         ActionBar actionbar = getSupportActionBar();

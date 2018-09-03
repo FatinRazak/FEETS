@@ -12,4 +12,19 @@
         android:textAlignment="center"
         android:text="@string/hello_3in30" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/beachImage"
+        android:background="@drawable/shadow"/>
+
+    <ImageView
+        android:id="@+id/beachImage"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@color/white"
+        android:src="@drawable/beach_chairs"/>
+
+
+
 </FrameLayout>
