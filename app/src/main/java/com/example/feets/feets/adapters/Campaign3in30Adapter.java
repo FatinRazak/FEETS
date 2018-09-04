@@ -7,11 +7,11 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.example.feets.feets.fragments.Campaign3in30;
 import com.example.feets.feets.fragments.Campaign3in30Leaderboard;
 
-public class PageAdapter extends FragmentPagerAdapter {
+public class Campaign3in30Adapter extends FragmentPagerAdapter {
 
     private int numOfTabs;
 
-    public PageAdapter(FragmentManager fm, int numOfTabs) {
+    public Campaign3in30Adapter(FragmentManager fm, int numOfTabs) {
         super(fm);
         this.numOfTabs = numOfTabs;
     }
