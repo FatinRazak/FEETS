@@ -3,4 +3,8 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="drawablePadding">-20dp</dimen>
+    <dimen name="drawablePadding40">-40dp</dimen>
+    <dimen name="cardPadding">10dp</dimen>
+
+    <dimen name="tendp">10dp</dimen>
 </resources>
