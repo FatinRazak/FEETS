@@ -25,5 +25,17 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_3in30">Hello 3 in 30</string>
     <string name="hello_3in30_leaderboard">Hello 3 in 30 Leaderboard</string>
+    <string name="endsin">Ends In</string>
+    <string name="Feets_kick_start">Feet\'s Kick-start Campaign</string>
+    <string name="your_chances_of">Your chances of winning a free trip to one of the 3 magical tropical beaches!</string>
+    <string name="three_free_trips">3 free trips to 3 of the nicest beaches in South Asia, go to the 3 top winners og this campaign, competing in 30 days only!</string>
+    <string name="first_place">1st Place</string>
+    <string name="second_place">2nd Place</string>
+    <string name="third_place">3rd Place</string>
+    <string name="bali">Bali</string>
+    <string name="krabi">Krabi</string>
+    <string name="phuket">Phuket</string>
+    <string name="indonesia">Indonesia</string>
+    <string name="thailand">Thailand</string>
 
 </resources>

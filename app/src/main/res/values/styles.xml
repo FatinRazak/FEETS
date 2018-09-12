@@ -69,6 +69,7 @@
         <item name="android:layout_height">80dp</item>
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:layout_centerVertical">true</item>
+        <item name="android:padding">10dp</item>
     </style>
 
     <style name="userLeaderboardMiddle">
@@ -79,6 +80,7 @@
         <item name="android:layout_height">100dp</item>
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:layout_centerVertical">true</item>
+        <item name="android:padding">10dp</item>
         <!--<item name="android:background">@drawable/white_oval</item>-->
     </style>
     
@@ -115,5 +117,13 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textAlignment">center</item>
     </style>
+    
+    <!--fragment_3in30-->
+
+    <style name="centerGravityAlignment">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
 
 </resources>

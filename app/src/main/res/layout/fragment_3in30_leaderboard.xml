@@ -9,7 +9,7 @@
     <View
         android:id="@+id/whiteBg"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_height="170dp"
         android:background="@color/white"
         android:layout_marginTop="@dimen/tendp"/>
 
@@ -25,13 +25,13 @@
         style="@style/shadowBottom"/>
 
     <View
-        android:id="@+id/tabsShadow"
+        android:id="@+id/tabs_shadow"
         style="@style/shadowBottom"/>
 
     <GridLayout
         android:id="@+id/leaderboardGrid3in30"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_height="170dp"
         android:alignmentMode="alignMargins"
         android:columnCount="3"
         android:columnOrderPreserved="true"
@@ -41,27 +41,24 @@
         android:layout_marginTop="@dimen/tendp"
         android:rowCount="4">
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
             android:id="@+id/secondPlaceImage"
             android:layout_column="0"
             android:layout_row="0"
-            style="@style/userLeaderboard"
-            android:src="@drawable/potrait_girl" />
+            style="@style/userLeaderboard" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
             android:id="@+id/firstPlaceImage"
             android:layout_column="1"
             android:layout_row="0"
-            style="@style/userLeaderboardMiddle"
-            android:src="@drawable/potrait_girl"/>
+            style="@style/userLeaderboardMiddle"/>
 
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
             android:id="@+id/thirdPlaceImage"
             android:layout_column="2"
             android:layout_row="0"
-            style="@style/userLeaderboard"
-            android:src="@drawable/potrait_girl" />
+            style="@style/userLeaderboard"/>
 
         <TextView
             android:id="@+id/secondPlace"
@@ -171,7 +168,7 @@
                     android:layout_width="@dimen/tendp"
                     android:textSize="15dp" />
 
-                <de.hdodenhof.circleimageview.CircleImageView
+                <ImageView
                     android:id="@+id/leaderboardImage"
                     android:layout_column="1"
                     android:layout_row="0"
@@ -181,8 +178,7 @@
                     android:scaleType="centerCrop"
                     android:layout_rowSpan="2"
                     android:layout_columnWeight="15"
-                    android:padding="5dp"
-                    android:src="@drawable/potrait_girl" />
+                    android:padding="5dp"/>
 
 
                 <TextView
@@ -264,7 +260,7 @@
                     android:layout_width="@dimen/tendp"
                     android:textSize="15dp" />
 
-                <de.hdodenhof.circleimageview.CircleImageView
+                <ImageView
                     android:id="@+id/leaderboardImageYOU"
                     android:layout_column="1"
                     android:layout_row="0"
@@ -274,8 +270,7 @@
                     android:scaleType="centerCrop"
                     android:layout_rowSpan="2"
                     android:layout_columnWeight="15"
-                    android:padding="5dp"
-                    android:src="@drawable/potrait_girl" />
+                    android:padding="5dp" />
 
 
                 <TextView
