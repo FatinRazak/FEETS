@@ -50,6 +50,7 @@ public class CampaignActivity extends AppCompatActivity {
         mtab3in30Leaderboard = (TabItem) findViewById(R.id.tab3in30Leaderboard);
         mviewPager = (ViewPager) findViewById(R.id.viewPager);
 
+
         Campaign3in30Adapter campaign3in30Adapter = new Campaign3in30Adapter(getSupportFragmentManager(), mtabLayout.getTabCount());
         mviewPager.setAdapter(campaign3in30Adapter);
         mviewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mtabLayout));

@@ -35,7 +35,30 @@
     <string name="bali">Bali</string>
     <string name="krabi">Krabi</string>
     <string name="phuket">Phuket</string>
-    <string name="indonesia">Indonesia</string>
-    <string name="thailand">Thailand</string>
+    <string name="indonesia">, Indonesia</string>
+    <string name="thailand">, Thailand</string>
+    <string name="campaign_3in30_rule">
+        The rules are simple
+    </string>
+    <string name="campaign_3in30_tips">
+        The fastest way to the top
+    </string>
+    <string name="campaign_3in30_tipsBullets">
+        \nitem 1 \nitem 2 \nitem 3 \nitem 4
+    </string>
+
+    <string name="campaign_3in30_rulehtml">
+        <b><big>The rules are simple</big></b>
+        \n • Item one
+        \n • Item two
+        \n • Item three
+    </string>
+
+    <string name="campaign_3in30_tipshtml">
+        <b><big>The fastest way to the top</big></b>
+        \n • Item one
+        \n • Item two
+        \n • Item three
+    </string>
 
 </resources>

@@ -17,7 +17,7 @@
         android:text="@string/title_home"
         android:textAlignment="center"
         android:gravity="center_vertical"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:layout_above="@id/navigation"
         android:layout_below="@id/tabs"/>
 
@@ -109,7 +109,7 @@
             android:background="@drawable/black_rounded_opacity"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
     </GridLayout>
 
     <!--<TextView-->

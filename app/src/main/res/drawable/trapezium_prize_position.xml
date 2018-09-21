@@ -1,0 +1,25 @@
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- The bottom layer is a blue square rotate 45 degree rotation. -->
+    <item android:right="50dp">
+        <shape>
+            <solid android:color="#b42e2e2e" />
+            <size
+                android:width="110dp"
+                android:height="45dp" />
+        </shape>
+    </item>
+    <item android:left="110dp">
+        <vector
+            android:height="45dp"
+            android:width="45dp"
+            android:viewportHeight="100"
+            android:viewportWidth="100">
+            <path
+                android:name="light_triangle"
+                android:fillColor="#B42E2E2E"
+                android:pathData="M 0,0 L 50,0 0,100 z" />
+        </vector>
+    </item>
+
+</layer-list>
