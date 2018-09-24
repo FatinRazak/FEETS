@@ -6,13 +6,17 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
+
+import com.example.feets.feets.ui.FlipAnimation;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
     private Toolbar toolbar;
     private TextView event3in30btn;
+    private ImageView imgView1;
+    private ImageView imgView2;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -85,6 +91,44 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        imgView1 = (ImageView) findViewById(R.id.ImageView01);
+        imgView2 = (ImageView) findViewById(R.id.ImageView02);
+
+        imgView1.setClickable(true);
+        imgView2.setClickable(true);
+
+//        imgView1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                FlipAnimation flipAnimation = new FlipAnimation(imgView1,imgView2);
+//                if (imgView1.getVisibility() == View.GONE) {
+//                    flipAnimation.reverse();
+//                    Log.i(com.example.feets.feets.constants.GeneralConstants.TAG, "flipAnimation.reverse();");
+//                }
+//                else{
+//                    imgView2.startAnimation(flipAnimation);
+//                    Log.i(com.example.feets.feets.constants.GeneralConstants.TAG, "imgView2.startAnimation(flipAnimation)");
+//                }
+//            }
+//        });
+
+        imgView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FlipAnimation flipAnimation = new FlipAnimation(imgView1,imgView2, true);
+                imgView2.startAnimation(flipAnimation);
+            }
+        });
+
+        imgView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FlipAnimation flipAnimation = new FlipAnimation(imgView2,imgView1, false);
+                imgView1.startAnimation(flipAnimation);
+            }
+        });
+
 
     }
 

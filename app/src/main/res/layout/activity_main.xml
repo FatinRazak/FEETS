@@ -65,6 +65,19 @@
             style="@style/WhiteNumbersBoldWithOpaBlackBg"/>
 
         <ImageView
+            android:id="@+id/ImageView02"
+            android:layout_column="1"
+            android:layout_row="0"
+            android:layout_width="135dp"
+            android:layout_height="135dp"
+            android:layout_gravity="fill"
+            android:scaleType="fitCenter"
+            android:layout_columnWeight="15"
+            android:layout_rowSpan="3"
+            android:src="@drawable/center3in30"/>
+
+        <ImageView
+            android:id="@+id/ImageView01"
             android:layout_column="1"
             android:layout_row="0"
             android:layout_width="135dp"
@@ -74,6 +87,7 @@
             android:layout_columnWeight="15"
             android:layout_rowSpan="3"
             android:src="@drawable/center3in30" />
+
 
         <TextView
             android:layout_column="2"
@@ -100,7 +114,7 @@
             android:layout_column="1"
             android:layout_row="3"
             android:drawablePadding="@dimen/drawablePadding"
-            android:drawableRight="@drawable/ic_announcement"
+            android:drawableRight="@drawable/ic_forward_arrow_circle"
             android:text="20:20:20"
             android:layout_gravity="fill"
             android:layout_columnWeight="15"
@@ -111,16 +125,6 @@
             android:textStyle="bold"
             android:textSize="20sp" />
     </GridLayout>
-
-    <!--<TextView-->
-        <!--android:id="@+id/countDown"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:gravity="center_horizontal"-->
-        <!--android:text="countDown"-->
-        <!--android:textSize="30dp"-->
-        <!--android:layout_below="@id/beachGrid"-->
-        <!--android:layout_above="@id/tabs"/>-->
 
     <View
         style="@style/shadowBottom"
