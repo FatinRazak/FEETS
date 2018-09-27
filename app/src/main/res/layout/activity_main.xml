@@ -7,14 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/message"
-        android:layout_width="match_parent"
-        android:layout_height="1000dp"
-        android:text="@string/title_home"
-        android:textAlignment="center"
-        android:gravity="center_vertical"
-        android:textSize="20sp"/>
+    <!--<TextView-->
+        <!--android:id="@+id/message"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1000dp"-->
+        <!--android:text="@string/title_home"-->
+        <!--android:textAlignment="center"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:textSize="20sp"/>-->
 
 
     <android.support.design.widget.CoordinatorLayout
@@ -28,6 +28,7 @@
             android:id="@+id/htab_appbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/transparent"
             android:fitsSystemWindows="true">
 
             <android.support.design.widget.CollapsingToolbarLayout
@@ -36,135 +37,152 @@
                 android:layout_height="300dp"
                 android:fitsSystemWindows="true"
                 app:contentScrim="@color/StartColor3in30"
-                app:statusBarScrim="@color/StartColor3in30"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:statusBarScrim="@color/StartColor3in30">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/beach_chairs"
-                android:fitsSystemWindows="true"
-                android:scaleType="centerCrop"
-                app:layout_collapseMode="parallax"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/home_center_image"
+                    android:fitsSystemWindows="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/beach_chairs"
+                    app:layout_collapseMode="parallax" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/blue_gradientopacitybg_3in30" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/blue_gradientopacitybg_3in30" />
 
-                <include layout="@layout/toolbar_main"
-                    android:id="@+id/toolbar"></include>
+                <include
+                    android:id="@+id/toolbar"
+                    layout="@layout/toolbar_main"></include>
 
                 <GridLayout
                     android:id="@+id/beachGrid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/toolbar"
                     android:layout_above="@id/tabs"
-                    android:alignmentMode="alignMargins"
+                    android:layout_below="@id/toolbar"
                     android:layout_marginTop="65dp"
+                    android:alignmentMode="alignMargins"
                     android:columnCount="3"
                     android:columnOrderPreserved="true"
-                    android:paddingRight="10dp"
                     android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:rowCount="4">
 
                     <TextView
-                        android:layout_column="0"
+                        style="@style/WhiteTextScoreRank"
                         android:layout_row="0"
-                        android:text="@string/rank"
-                        style="@style/WhiteTextScoreRank"/>
+                        android:layout_column="0"
+                        android:text="@string/rank" />
 
                     <TextView
-                        android:layout_column="0"
+                        style="@style/WhiteNumbersBoldWithOpaBlackBg"
                         android:layout_row="1"
-                        android:text="7th"
-                        style="@style/WhiteNumbersBoldWithOpaBlackBg"/>
+                        android:layout_column="0"
+                        android:text="@string/seasonal_rank" />
 
-                    <ImageView
+                    <!--<ImageView-->
+                        <!--android:id="@+id/ImageView02"-->
+                        <!--android:layout_width="135dp"-->
+                        <!--android:layout_height="135dp"-->
+                        <!--android:layout_row="0"-->
+                        <!--android:layout_rowSpan="3"-->
+                        <!--android:layout_column="1"-->
+                        <!--android:layout_columnWeight="15"-->
+                        <!--android:layout_gravity="fill"-->
+                        <!--android:contentDescription="@string/home_center_image1"-->
+                        <!--android:scaleType="fitCenter"-->
+                        <!--android:src="@drawable/center3in30" />-->
+
+                    <TextView
                         android:id="@+id/ImageView02"
-                        android:layout_column="1"
-                        android:layout_row="0"
                         android:layout_width="135dp"
                         android:layout_height="135dp"
-                        android:layout_gravity="fill"
-                        android:scaleType="fitCenter"
-                        android:layout_columnWeight="15"
+                        android:layout_row="0"
                         android:layout_rowSpan="3"
-                        android:src="@drawable/center3in30"/>
+                        android:layout_column="1"
+                        android:layout_columnWeight="15"
+                        android:layout_gravity="fill"
+                        android:text="@string/home_center_image1"
+                        android:visibility="gone"
+                        android:scaleType="fitCenter" />
 
                     <ImageView
                         android:id="@+id/ImageView01"
-                        android:layout_column="1"
-                        android:layout_row="0"
                         android:layout_width="135dp"
                         android:layout_height="135dp"
-                        android:layout_gravity="fill"
-                        android:scaleType="fitCenter"
-                        android:layout_columnWeight="15"
+                        android:layout_row="0"
                         android:layout_rowSpan="3"
+                        android:layout_column="1"
+                        android:layout_columnWeight="15"
+                        android:layout_gravity="fill"
+                        android:contentDescription="@string/home_center_image2"
+                        android:scaleType="fitCenter"
                         android:src="@drawable/center3in30" />
 
                     <TextView
-                        android:layout_column="2"
+                        style="@style/WhiteTextScoreRank"
                         android:layout_row="0"
-                        android:text="@string/score"
-                        style="@style/WhiteTextScoreRank" />
+                        android:layout_column="2"
+                        android:text="@string/score" />
 
                     <TextView
-                        android:layout_column="2"
+                        style="@style/WhiteNumbersBoldWithOpaBlackBg"
                         android:layout_row="1"
-                        android:text="1,950"
-                        style="@style/WhiteNumbersBoldWithOpaBlackBg" />
+                        android:layout_column="2"
+                        android:text="@string/seasonal_score" />
 
                     <TextView
-                        android:layout_column="2"
+                        style="@style/WhiteTextScoreRank"
                         android:layout_row="2"
-                        android:text="x1.5"
-                        android:drawablePadding="@dimen/drawablePadding"
+                        android:layout_column="2"
                         android:drawableLeft="@drawable/ic_announcement"
-                        style="@style/WhiteTextScoreRank" />
+                        android:drawablePadding="@dimen/drawablePadding"
+                        android:text="x1.5" />
 
                     <TextView
                         android:id="@+id/event3in30"
-                        android:layout_column="1"
                         android:layout_row="3"
-                        android:drawablePadding="@dimen/drawablePadding"
-                        android:drawableRight="@drawable/ic_forward_arrow_circle"
-                        android:text="20:20:20"
-                        android:layout_gravity="fill"
+                        android:layout_column="1"
                         android:layout_columnWeight="15"
-                        android:textAlignment="center"
-                        android:gravity="center"
+                        android:layout_gravity="fill"
                         android:background="@drawable/black_rounded_opacity"
+                        android:drawableRight="@drawable/ic_forward_arrow_circle"
+                        android:drawablePadding="@dimen/drawablePadding"
+                        android:gravity="center"
+                        android:text="20:20:20"
+                        android:textAlignment="center"
                         android:textColor="@color/white"
-                        android:textStyle="bold"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
                 </GridLayout>
 
                 <android.support.design.widget.TabLayout
                     android:id="@+id/tabs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/transparent"
                     android:layout_alignBottom="@+id/ImageBeach"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_gravity="bottom"
+                    android:background="@color/transparent"
                     android:elevation="10dp"
-                    app:tabSelectedTextColor="@color/white"
+                    app:tabGravity="fill"
                     app:tabIndicatorColor="@color/white"
                     app:tabIndicatorHeight="3dp"
-                    app:tabTextAppearance="@style/TabText"
                     app:tabMode="fixed"
-                    app:tabGravity="fill">
+                    app:tabSelectedTextColor="@color/white"
+                    app:tabTextAppearance="@style/TabText">
 
                     <android.support.design.widget.TabItem
                         android:id="@+id/tab_challenges"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/tab1main"
-                        android:icon="@drawable/ic_challenges"/>
+                        android:icon="@drawable/ic_challenges"
+                        android:text="@string/tab1main" />
 
                     <android.support.design.widget.TabItem
                         android:id="@+id/tab_feed"
@@ -182,147 +200,26 @@
 
                 </android.support.design.widget.TabLayout>
 
-
             </android.support.design.widget.CollapsingToolbarLayout>
 
+            <View
+                style="@style/shadowBottom"
+                android:backgroundTint="@color/transparent"
+                android:backgroundTintMode="src_over"
+                app:layout_anchor="@id/tab_viewpager"
+                app:layout_anchorGravity="bottom" />
 
         </android.support.design.widget.AppBarLayout>
 
         <android.support.v4.view.ViewPager
             android:id="@+id/tab_viewpager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/bottomNavigationHeight"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
         </android.support.v4.view.ViewPager>
 
     </android.support.design.widget.CoordinatorLayout>
-
-    <!--<GridLayout-->
-        <!--android:id="@+id/beachGrid"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@id/toolbar"-->
-        <!--android:layout_above="@id/tabs"-->
-        <!--android:alignmentMode="alignMargins"-->
-        <!--android:columnCount="3"-->
-        <!--android:columnOrderPreserved="true"-->
-        <!--android:paddingRight="10dp"-->
-        <!--android:paddingLeft="10dp"-->
-        <!--android:rowCount="4">-->
-
-        <!--<TextView-->
-            <!--android:layout_column="0"-->
-            <!--android:layout_row="0"-->
-            <!--android:text="@string/rank"-->
-            <!--style="@style/WhiteTextScoreRank"/>-->
-
-        <!--<TextView-->
-            <!--android:layout_column="0"-->
-            <!--android:layout_row="1"-->
-            <!--android:text="7th"-->
-            <!--style="@style/WhiteNumbersBoldWithOpaBlackBg"/>-->
-
-        <!--<ImageView-->
-            <!--android:id="@+id/ImageView02"-->
-            <!--android:layout_column="1"-->
-            <!--android:layout_row="0"-->
-            <!--android:layout_width="135dp"-->
-            <!--android:layout_height="135dp"-->
-            <!--android:layout_gravity="fill"-->
-            <!--android:scaleType="fitCenter"-->
-            <!--android:layout_columnWeight="15"-->
-            <!--android:layout_rowSpan="3"-->
-            <!--android:src="@drawable/center3in30"/>-->
-
-        <!--<ImageView-->
-            <!--android:id="@+id/ImageView01"-->
-            <!--android:layout_column="1"-->
-            <!--android:layout_row="0"-->
-            <!--android:layout_width="135dp"-->
-            <!--android:layout_height="135dp"-->
-            <!--android:layout_gravity="fill"-->
-            <!--android:scaleType="fitCenter"-->
-            <!--android:layout_columnWeight="15"-->
-            <!--android:layout_rowSpan="3"-->
-            <!--android:src="@drawable/center3in30" />-->
-
-
-        <!--<TextView-->
-            <!--android:layout_column="2"-->
-            <!--android:layout_row="0"-->
-            <!--android:text="@string/score"-->
-            <!--style="@style/WhiteTextScoreRank" />-->
-
-        <!--<TextView-->
-            <!--android:layout_column="2"-->
-            <!--android:layout_row="1"-->
-            <!--android:text="1,950"-->
-            <!--style="@style/WhiteNumbersBoldWithOpaBlackBg" />-->
-
-        <!--<TextView-->
-            <!--android:layout_column="2"-->
-            <!--android:layout_row="2"-->
-            <!--android:text="x1.5"-->
-            <!--android:drawablePadding="@dimen/drawablePadding"-->
-            <!--android:drawableLeft="@drawable/ic_announcement"-->
-            <!--style="@style/WhiteTextScoreRank" />-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/event3in30"-->
-            <!--android:layout_column="1"-->
-            <!--android:layout_row="3"-->
-            <!--android:drawablePadding="@dimen/drawablePadding"-->
-            <!--android:drawableRight="@drawable/ic_forward_arrow_circle"-->
-            <!--android:text="20:20:20"-->
-            <!--android:layout_gravity="fill"-->
-            <!--android:layout_columnWeight="15"-->
-            <!--android:textAlignment="center"-->
-            <!--android:gravity="center"-->
-            <!--android:background="@drawable/black_rounded_opacity"-->
-            <!--android:textColor="@color/white"-->
-            <!--android:textStyle="bold"-->
-            <!--android:textSize="20sp" />-->
-    <!--</GridLayout>-->
-
-    <View
-        style="@style/shadowBottom"
-        android:layout_below="@id/tabs"/>
-
-    <!--<android.support.design.widget.TabLayout-->
-        <!--android:id="@+id/tabs"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:background="@color/transparent"-->
-        <!--android:layout_alignBottom="@+id/ImageBeach"-->
-        <!--android:layout_alignParentStart="true"-->
-        <!--android:layout_alignParentLeft="true"-->
-        <!--app:tabSelectedTextColor="@color/white"-->
-        <!--app:tabIndicatorColor="@color/white"-->
-        <!--app:tabIndicatorHeight="3dp"-->
-        <!--app:tabTextAppearance="@style/TabText"-->
-        <!--app:tabMode="fixed"-->
-        <!--app:tabGravity="fill">-->
-
-        <!--<android.support.design.widget.TabItem-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="@string/tab1main"-->
-            <!--android:icon="@drawable/ic_challenges"-->
-            <!--/>-->
-
-        <!--<android.support.design.widget.TabItem-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:icon="@drawable/ic_feed"-->
-            <!--android:text="@string/tab2main" />-->
-
-        <!--<android.support.design.widget.TabItem-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:icon="@drawable/ic_announcement"-->
-            <!--android:text="@string/tab3main" />-->
-
-    <!--</android.support.design.widget.TabLayout>-->
 
     <View
         style="@style/shadowTop"
@@ -331,13 +228,15 @@
     <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
         android:id="@+id/navigation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/bottomNavigationHeight"
         android:layout_marginEnd="0dp"
         android:layout_marginStart="0dp"
         android:background="?android:attr/windowBackground"
+        android:overScrollMode="never"
         app:menu="@menu/navigation"
         android:layout_alignParentBottom="true"
         android:forceHasOverlappingRendering="true"
+        android:clipToPadding="false"
         android:layout_gravity="center"
         />
 

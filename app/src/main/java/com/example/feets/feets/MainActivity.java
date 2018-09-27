@@ -1,5 +1,6 @@
 package com.example.feets.feets;
 
+import android.app.LauncherActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -19,8 +20,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import com.example.feets.feets.adapters.MainFragmentAdapter;
+import com.example.feets.feets.constants.GeneralConstants;
 import com.example.feets.feets.models.Challenge;
 import com.example.feets.feets.ui.FlipAnimation;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
@@ -33,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TextView event3in30btn;
     private ImageView imgView1;
-    private ImageView imgView2;
+    private TextView imgView2;
     private TabLayout mtabLayout;
     private TabItem mtabChallenges;
     private TabItem mtabFeed;
@@ -47,24 +50,55 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+//                    mTextMessage.setText(R.string.title_home);
+                    Toast.makeText(getBaseContext(), "Home!",
+                            Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.navigation_highfive:
-                    mTextMessage.setText(R.string.title_highfive);
+//                    mTextMessage.setText(R.string.title_highfive);
+                    Toast.makeText(getBaseContext(), "Highfive!",
+                            Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.navigation_ting:
-                    mTextMessage.setText(R.string.title_ting);
+//                    mTextMessage.setText(R.string.title_ting);
+                    Toast.makeText(getBaseContext(), "T'ing!",
+                            Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.navigation_feeters:
-                    mTextMessage.setText(R.string.title_feeters);
+//                    mTextMessage.setText(R.string.title_feeters);
+                    Toast.makeText(getBaseContext(), "Feeters!",
+                            Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.navigation_makanbuddy:
-                    mTextMessage.setText(R.string.title_makanbuddy);
+//                    mTextMessage.setText(R.string.title_makanbuddy);
+                    Toast.makeText(getBaseContext(), "Makan Buddy!",
+                            Toast.LENGTH_SHORT).show();
                     return true;
             }
             return false;
         }
     };
+
+    private Toolbar.OnMenuItemClickListener mMenuItemClickListener = new Toolbar.OnMenuItemClickListener() {
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+
+            switch (item.getItemId()){
+                case R.id.chatBubble:
+                Toast.makeText(getBaseContext(), "Chat Bubble!",
+                        Toast.LENGTH_SHORT).show();
+                return true;
+                case R.id.notification:
+                Toast.makeText(getBaseContext(), "Notification!",
+                        Toast.LENGTH_SHORT).show();
+                return true;
+            }
+            return false;
+        }
+
+    };
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +125,17 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(" ");
         setSupportActionBar(toolbar);
+        toolbar.setOnMenuItemClickListener(mMenuItemClickListener);
+
+
+        toolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(GeneralConstants.TAG, "click");
+            }
+        });
+
+
 
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
@@ -105,26 +150,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //ANIMATION PURPOSES
         imgView1 = (ImageView) findViewById(R.id.ImageView01);
-        imgView2 = (ImageView) findViewById(R.id.ImageView02);
+        imgView2 = (TextView) findViewById(R.id.ImageView02);
 
         imgView1.setClickable(true);
         imgView2.setClickable(true);
-
-//        imgView1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                FlipAnimation flipAnimation = new FlipAnimation(imgView1,imgView2);
-//                if (imgView1.getVisibility() == View.GONE) {
-//                    flipAnimation.reverse();
-//                    Log.i(com.example.feets.feets.constants.GeneralConstants.TAG, "flipAnimation.reverse();");
-//                }
-//                else{
-//                    imgView2.startAnimation(flipAnimation);
-//                    Log.i(com.example.feets.feets.constants.GeneralConstants.TAG, "imgView2.startAnimation(flipAnimation)");
-//                }
-//            }
-//        });
 
         imgView1.setOnClickListener(new View.OnClickListener() {
             @Override

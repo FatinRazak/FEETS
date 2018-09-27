@@ -60,5 +60,10 @@
         \n • Item two
         \n • Item three
     </string>
+    <string name="home_center_image">Home center image</string>
+    <string name="seasonal_rank">7th</string>
+    <string name="seasonal_score">1,950</string>
+    <string name="home_center_image1">First image home view</string>
+    <string name="home_center_image2">Second image home view</string>
 
 </resources>

@@ -7,5 +7,7 @@
     <dimen name="cardPadding">10dp</dimen>
 
     <dimen name="tendp">10dp</dimen>
+    <dimen name="fivedp">5dp</dimen>
     <dimen name="actionBarSize">56dp</dimen>
+    <dimen name="bottomNavigationHeight">60dp</dimen>
 </resources>

@@ -1,5 +1,6 @@
 package com.example.feets.feets.fragments;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,17 +16,24 @@ import com.example.feets.feets.models.Announcement;
 import java.util.ArrayList;
 
 public class Announcements extends Fragment {
-    String[] items = new String[] { "Android", "iPhone", "WindowsMobile",
+    String[] items = new String[] { "Announcements", "iPhone", "WindowsMobile",
             "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
             "Linux", "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux",
             "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux", "OS/2",
             "Android", "iPhone", "WindowsMobile"};
 
-    String[] subitems = new String[] { "Sub Android", "Sub iPhone", "Sub WindowsMobile",
+    String[] subitems = new String[] { "Sub Announcements", "Sub iPhone", "Sub WindowsMobile",
             "Sub Blackberry", "Sub WebOS", "Sub Ubuntu", "Sub Windows7", "Sub Max OS X",
             "Sub Linux", "Sub OS/2", "Sub Ubuntu", "Sub Windows7", "Sub Max OS X", "Sub Linux",
             "Sub OS/2", "Sub Ubuntu", "Sub Windows7", "Sub Max OS X", "Sub Linux", "Sub OS/2",
             "Sub Android", "Sub iPhone", "Sub WindowsMobile"};
+
+    int[] imgid = {R.drawable.center3in30, R.drawable.potrait_girl, R.drawable.center3in30,
+            R.drawable.potrait_girl, R.drawable.center3in30, R.drawable.potrait_girl, R.drawable.center3in30,
+            R.drawable.potrait_girl, R.drawable.center3in30, R.drawable.potrait_girl, R.drawable.center3in30,
+            R.drawable.potrait_girl, R.drawable.center3in30, R.drawable.potrait_girl, R.drawable.center3in30,
+            R.drawable.potrait_girl, R.drawable.center3in30, R.drawable.potrait_girl, R.drawable.center3in30,
+            R.drawable.potrait_girl, R.drawable.center3in30, R.drawable.potrait_girl, R.drawable.center3in30};
 
     private ListView mListView;
 
@@ -37,7 +45,7 @@ public class Announcements extends Fragment {
 
         //Push dummy data to Adapter
         for (int i = 0; i < items.length; i++){
-            Announcement announcement = new Announcement(items[i], subitems[i]);
+            Announcement announcement = new Announcement(items[i], subitems[i], imgid[i]);
             announcementlist.add(announcement);
         }
 
