@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.example.feets.feets.R;
@@ -19,6 +20,8 @@ public class FeedAdapter extends ArrayAdapter {
     private class FeedViewHolder {
         TextView item;
         TextView subitem;
+        CheckBox mCheck;
+        boolean[] checkBoxState;
     }
 
     public FeedAdapter(Context context, int tvResId, ArrayList<Feed> items) {
@@ -35,6 +38,8 @@ public class FeedAdapter extends ArrayAdapter {
             feedViewHolder = new FeedViewHolder();
             feedViewHolder.item = (TextView)v.findViewById(R.id.item);
             feedViewHolder.subitem = (TextView)v.findViewById(R.id.subitem);
+            feedViewHolder.mCheck = (CheckBox)v.findViewById(R.id.check);
+            feedViewHolder.mCheck.setChecked(false);
             v.setTag(feedViewHolder);
         }
         else feedViewHolder = (FeedViewHolder) v.getTag();

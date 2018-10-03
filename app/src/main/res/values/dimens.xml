@@ -5,9 +5,11 @@
     <dimen name="drawablePadding">-20dp</dimen>
     <dimen name="drawablePadding40">-40dp</dimen>
     <dimen name="cardPadding">10dp</dimen>
+    <dimen name="tabHeight">48dp</dimen>
 
     <dimen name="tendp">10dp</dimen>
     <dimen name="fivedp">5dp</dimen>
+    <dimen name="countDownTextSize">20dp</dimen>
     <dimen name="actionBarSize">56dp</dimen>
     <dimen name="bottomNavigationHeight">60dp</dimen>
 </resources>

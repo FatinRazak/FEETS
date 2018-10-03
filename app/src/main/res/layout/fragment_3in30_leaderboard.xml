@@ -109,6 +109,7 @@
             <TextView
                 android:layout_column="0"
                 android:layout_row="3"
+                android:textAlignment="center"
                 android:text="@string/rank"
                 style="@style/campaignTopPointsLeaderboard" />
 
@@ -219,7 +220,7 @@
                         android:text="@string/rank"
                         android:textColor="@color/darkGrey"
                         android:layout_rowSpan="2"
-                        android:drawableLeft="@drawable/ic_announcement"
+                        android:drawableLeft="@drawable/ic_boost"
                         android:drawableTint="@color/flameOrange"
                         android:textSize="17sp" />
 
@@ -311,7 +312,7 @@
                         android:text="@string/rank"
                         android:textColor="@color/white"
                         android:layout_rowSpan="2"
-                        android:drawableLeft="@drawable/ic_announcement"
+                        android:drawableLeft="@drawable/ic_boost"
                         android:drawableTint="@color/flameOrange"
                         android:textSize="17sp" />
                 </GridLayout>

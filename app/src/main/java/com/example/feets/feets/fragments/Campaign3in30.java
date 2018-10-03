@@ -1,11 +1,13 @@
 package com.example.feets.feets.fragments;
 
 import android.graphics.Color;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.BulletSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.feets.feets.R;
+import com.example.feets.feets.constants.GeneralConstants;
+
+import java.text.DecimalFormat;
 
 public class Campaign3in30 extends Fragment{
 
@@ -22,6 +27,10 @@ public class Campaign3in30 extends Fragment{
     private ImageView mKrabiBg;
     private TextView mRule;
     private TextView mTips;
+    private TextView mCdHours;
+    private TextView mCdMinutes;
+    private TextView mCdSeconds;
+    private TextView mCdDays;
 
 //    BulletSpan Way
     String mTiptext;
@@ -74,6 +83,61 @@ public class Campaign3in30 extends Fragment{
 
         // Display the spannable text to TextView
         mTips.setText(mSSBuilder);
+
+        //Count Down
+        mCdDays = (TextView) view.findViewById(R.id.cd_days);
+        mCdHours = (TextView) view.findViewById(R.id.cd_hours);
+        mCdMinutes = (TextView) view.findViewById(R.id.cd_minutes);
+        mCdSeconds = (TextView) view.findViewById(R.id.cd_seconds);
+
+
+
+        new CountDownTimer(1728000000, 1000){
+            DecimalFormat df = new DecimalFormat("#00");
+            public void onTick(long millisUntilFinished) {
+                mCdDays.setText("" + df.format(millisUntilFinished / (1000*60*60*24)));
+                mCdHours.setText("" + df.format(((millisUntilFinished / (1000*60*60)) % 24)));
+                mCdMinutes.setText("" + df.format(((millisUntilFinished / (1000*60)) % 60)));
+                mCdSeconds.setText("" + df.format((millisUntilFinished / 1000) % 60));
+
+                //If more than 20 days (1728000000 milliseconds)
+                if(millisUntilFinished > 1728000000){
+//                    Log.i(GeneralConstants.TAG, "more than 20 days");
+                    mCdDays.setBackgroundResource(R.drawable.green_countdown_bg);
+                    mCdHours.setBackgroundResource(R.drawable.green_countdown_bg);
+                    mCdMinutes.setBackgroundResource(R.drawable.green_countdown_bg);
+                    mCdSeconds.setBackgroundResource(R.drawable.green_countdown_bg);
+                }
+                //If less than 20 days and more than 10 days (864000000 milliseconds)
+                else if(millisUntilFinished < 1728000000 &&  millisUntilFinished > 864000000){
+//                    Log.i(GeneralConstants.TAG, "less than 20 days and more than 10 days");
+                    mCdDays.setBackgroundResource(R.drawable.orange_countdown_bg);
+                    mCdHours.setBackgroundResource(R.drawable.orange_countdown_bg);
+                    mCdMinutes.setBackgroundResource(R.drawable.orange_countdown_bg);
+                    mCdSeconds.setBackgroundResource(R.drawable.orange_countdown_bg);
+                }
+                //If less than 10 days left
+                else if (millisUntilFinished < 864000000) {
+//                    Log.i(GeneralConstants.TAG, "less than 10 days");
+                    mCdDays.setBackgroundResource(R.drawable.red_countdown_bg);
+                    mCdHours.setBackgroundResource(R.drawable.red_countdown_bg);
+                    mCdMinutes.setBackgroundResource(R.drawable.red_countdown_bg);
+                    mCdSeconds.setBackgroundResource(R.drawable.red_countdown_bg);
+                }
+                else {
+
+                }
+
+            }
+
+            public void onFinish() {
+                mCdDays.setText("00");
+                mCdHours.setText("00");
+                mCdMinutes.setText("00");
+                mCdSeconds.setText("00");
+            }
+        }.start();
+
 
 
         return view;

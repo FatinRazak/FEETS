@@ -1,8 +1,11 @@
 package com.example.feets.feets;
 
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.app.LauncherActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabItem;
@@ -28,6 +31,7 @@ import com.example.feets.feets.models.Challenge;
 import com.example.feets.feets.ui.FlipAnimation;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -42,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private TabItem mtabFeed;
     private TabItem mtabAnnouncement;
     private ViewPager mviewPager;
+    private TextView mCountDown;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -201,6 +206,42 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             });
+
+        //Count Down
+        mCountDown = (TextView) findViewById(R.id.event3in30);
+
+        new CountDownTimer(864000000, 1000){
+            DecimalFormat df = new DecimalFormat("#00");
+            public void onTick(long millisUntilFinished) {
+                mCountDown.setText(df.format(millisUntilFinished / (1000*60*60*24)) + ":" + df.format(((millisUntilFinished / (1000*60*60)) % 24)) + ":" + df.format(((millisUntilFinished / (1000*60)) % 60)));
+                // seconds ->  + ":" + df.format((millisUntilFinished / 1000) % 60)
+
+                //If less than 10 days left
+                if (millisUntilFinished < 864000000) {
+                    //Log.i(GeneralConstants.TAG, "less than 10 days");
+                    mCountDown.setBackgroundResource(R.drawable.red_rounded_opacity);
+
+                    ObjectAnimator scaleDown = ObjectAnimator.ofPropertyValuesHolder(
+                            mCountDown,
+                            PropertyValuesHolder.ofFloat("scaleX", 1.1f),
+                            PropertyValuesHolder.ofFloat("scaleY", 1.1f));
+
+                    scaleDown.setDuration(310);
+                    scaleDown.setRepeatCount(ObjectAnimator.INFINITE);
+                    scaleDown.setRepeatMode(ObjectAnimator.REVERSE);
+                    scaleDown.start();
+
+                }
+                else {
+                    mCountDown.setBackgroundResource(R.drawable.black_rounded_opacity);
+                }
+
+            }
+
+            public void onFinish() {
+                mCountDown.setText("00:00:00");
+            }
+        }.start();
 
     }
 

@@ -16,6 +16,10 @@
     <color name="StartColor3in30">#208be9</color>
     <color name="EndColor3in30">#33ace1</color>
     <color name="blackRoundedColorOpacity10">#1e000000</color>
+    <color name="redRoundedColorOpacity10">#a0ff3636</color>
     <color name="flameOrange">#FE7A2E</color>
+    <color name="greenCountdown">#02D57F</color>
+    <color name="orangeCountdown">#FE7A2E</color>
+    <color name="redCountdown">#FC4B4B</color>
 
 </resources>

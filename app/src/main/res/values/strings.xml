@@ -65,5 +65,6 @@
     <string name="seasonal_score">1,950</string>
     <string name="home_center_image1">First image home view</string>
     <string name="home_center_image2">Second image home view</string>
+    <string name="boost">x1.5</string>
 
 </resources>
