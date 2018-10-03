@@ -2,7 +2,6 @@ package com.example.feets.feets;
 
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
-import android.app.LauncherActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -13,26 +12,32 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
+import com.android.volley.VolleyError;
 import com.example.feets.feets.adapters.MainFragmentAdapter;
+import com.example.feets.feets.api.IResult;
+import com.example.feets.feets.api.VolleyService;
+import com.example.feets.feets.constants.ApiConstants;
 import com.example.feets.feets.constants.GeneralConstants;
-import com.example.feets.feets.models.Challenge;
+import com.example.feets.feets.entity.CampaignBanner;
 import com.example.feets.feets.ui.FlipAnimation;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
-import java.text.DecimalFormat;
-import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Calendar;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,7 +51,17 @@ public class MainActivity extends AppCompatActivity {
     private TabItem mtabFeed;
     private TabItem mtabAnnouncement;
     private ViewPager mviewPager;
-    private TextView mCountDown;
+//    private TextView mCountDown;
+
+    //Volley
+    CampaignBanner campaignBanner;
+    private String TAG = "CampaignActivity";
+    IResult mResultCallback = null;
+    VolleyService mVolleyService;
+    private final String REQUEST_TYPE_EVENT = "GETEVENT";
+    TextView tvRankingValue, tvScoreValue, tvBoosterValue, tvTimerValue;
+    CountDownTimer mTimer;
+    ObjectAnimator scaleDown;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -88,21 +103,20 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onMenuItemClick(MenuItem item) {
 
-            switch (item.getItemId()){
+            switch (item.getItemId()) {
                 case R.id.chatBubble:
-                Toast.makeText(getBaseContext(), "Chat Bubble!",
-                        Toast.LENGTH_SHORT).show();
-                return true;
+                    Toast.makeText(getBaseContext(), "Chat Bubble!",
+                            Toast.LENGTH_SHORT).show();
+                    return true;
                 case R.id.notification:
-                Toast.makeText(getBaseContext(), "Notification!",
-                        Toast.LENGTH_SHORT).show();
-                return true;
+                    Toast.makeText(getBaseContext(), "Notification!",
+                            Toast.LENGTH_SHORT).show();
+                    return true;
             }
             return false;
         }
 
     };
-
 
 
     @Override
@@ -117,6 +131,16 @@ public class MainActivity extends AppCompatActivity {
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.setStatusBarColor(this.getResources().getColor(R.color.StartColor3in30Opacity));
         }
+
+        // <WAFI 02-10-18 add start>
+        // Volley init
+        tvScoreValue = (TextView) findViewById(R.id.tv_score_value);
+        tvRankingValue = (TextView) findViewById(R.id.tv_ranking_value);
+        tvBoosterValue = (TextView) findViewById(R.id.tv_booster_value);
+        event3in30btn = (TextView) findViewById(R.id.event3in30);
+        setDefaultBannerValue();
+        initVolleyCallback();
+        // <WAFI 02-10-18 add end>
 
         mTextMessage = (TextView) findViewById(R.id.message);
 //        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -141,16 +165,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
-        event3in30btn = (TextView) findViewById(R.id.event3in30);
+//        event3in30btn = (TextView) findViewById(R.id.event3in30);
         event3in30btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, CampaignActivity.class);
+                // TODO: 10/3/2018 Pass timer value to next activity??
                 startActivity(intent);
             }
         });
@@ -190,59 +214,57 @@ public class MainActivity extends AppCompatActivity {
         mviewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mtabLayout));
 
         mtabLayout.addOnTabSelectedListener(new
-            TabLayout.OnTabSelectedListener() {
-                @Override
-                public void onTabSelected(TabLayout.Tab tab) {
-                    mviewPager.setCurrentItem(tab.getPosition());
-                }
+                                                    TabLayout.OnTabSelectedListener() {
+                                                        @Override
+                                                        public void onTabSelected(TabLayout.Tab tab) {
+                                                            mviewPager.setCurrentItem(tab.getPosition());
+                                                        }
 
-                @Override
-                public void onTabUnselected(TabLayout.Tab tab) {
+                                                        @Override
+                                                        public void onTabUnselected(TabLayout.Tab tab) {
 
-                }
+                                                        }
 
-                @Override
-                public void onTabReselected(TabLayout.Tab tab) {
+                                                        @Override
+                                                        public void onTabReselected(TabLayout.Tab tab) {
 
-                }
-            });
+                                                        }
+                                                    });
 
-        //Count Down
-        mCountDown = (TextView) findViewById(R.id.event3in30);
+        //Count Down - Move to bottom
 
-        new CountDownTimer(864000000, 1000){
-            DecimalFormat df = new DecimalFormat("#00");
-            public void onTick(long millisUntilFinished) {
-                mCountDown.setText(df.format(millisUntilFinished / (1000*60*60*24)) + ":" + df.format(((millisUntilFinished / (1000*60*60)) % 24)) + ":" + df.format(((millisUntilFinished / (1000*60)) % 60)));
-                // seconds ->  + ":" + df.format((millisUntilFinished / 1000) % 60)
+    }
 
-                //If less than 10 days left
-                if (millisUntilFinished < 864000000) {
-                    //Log.i(GeneralConstants.TAG, "less than 10 days");
-                    mCountDown.setBackgroundResource(R.drawable.red_rounded_opacity);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // <WAFI 02-10-18 add start>
+        mVolleyService = new VolleyService(mResultCallback, this);
+        mVolleyService.getDataVolley(REQUEST_TYPE_EVENT, ApiConstants.REQ_SPECIAL_EVENTS);
 
-                    ObjectAnimator scaleDown = ObjectAnimator.ofPropertyValuesHolder(
-                            mCountDown,
-                            PropertyValuesHolder.ofFloat("scaleX", 1.1f),
-                            PropertyValuesHolder.ofFloat("scaleY", 1.1f));
+        if (scaleDown != null) {
+            scaleDown.start();
+        }
+        // <WAFI 02-10-18 add end>
+    }
 
-                    scaleDown.setDuration(310);
-                    scaleDown.setRepeatCount(ObjectAnimator.INFINITE);
-                    scaleDown.setRepeatMode(ObjectAnimator.REVERSE);
-                    scaleDown.start();
+    @Override
+    protected void onPause() {
+        if (scaleDown != null) {
+            scaleDown.pause();
+        }
+        super.onPause();
+    }
 
-                }
-                else {
-                    mCountDown.setBackgroundResource(R.drawable.black_rounded_opacity);
-                }
-
-            }
-
-            public void onFinish() {
-                mCountDown.setText("00:00:00");
-            }
-        }.start();
-
+    @Override
+    protected void onDestroy() {
+        //Clear timer & animator if exist
+        if (mTimer != null) {
+            mTimer.cancel();
+            mTimer = null;
+        }
+        scaleDown = null;
+        super.onDestroy();
     }
 
     @Override
@@ -252,5 +274,99 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    // <WAFI 02-10-18 add start>
+    /**
+     * This method will set the rank, score and booster & time text to its default value.
+     */
+    private void setDefaultBannerValue() {
+        tvRankingValue.setText("");
+        tvScoreValue.setText("");
+        tvBoosterValue.setText("");
+        event3in30btn.setText("00:00:00");
+    }
+
+    private void initVolleyCallback() {
+        mResultCallback = new IResult() {
+            @Override
+            public void notifySuccess(String requestType, JSONObject response) {
+                switch (requestType) {
+                    case REQUEST_TYPE_EVENT:
+                        try {
+                            JSONObject attributeObject = response.getJSONObject("data").getJSONObject("attributes");
+                            String currentBooster = attributeObject.getString("current_boosters");
+                            String ranking = attributeObject.getJSONObject("current_learner_score").getString("rank");
+                            String points = attributeObject.getJSONObject("current_learner_score").getString("points");
+                            String event_start = attributeObject.getString("event_start");
+                            String event_end = attributeObject.getString("event_end");
+
+                            campaignBanner = new CampaignBanner();
+                            campaignBanner.setCurrent_booster(currentBooster);
+                            campaignBanner.setRank(ranking);
+                            campaignBanner.setPoints(points);
+                            campaignBanner.setEvent_start(event_start);
+                            campaignBanner.setEvent_end(event_end);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        //Set data
+                        tvRankingValue.setText(campaignBanner.getRank());
+                        tvScoreValue.setText(campaignBanner.getPoints());
+                        tvBoosterValue.setText(campaignBanner.getCurrent_booster());
+                        //todo Find the time different for timer
+                        final DateTimeUtils obj = new DateTimeUtils();
+//                        Date start = DateTimeUtils.fromISO8601UTC(campaignBanner.getEvent_start());
+                        //Get current date
+                        Date date = Calendar.getInstance().getTime();
+                        String currentDateStr = DateTimeUtils.toISO8601UTC(date);
+                        Date current = DateTimeUtils.fromISO8601UTC(currentDateStr);
+                        Date end = DateTimeUtils.fromISO8601UTC(campaignBanner.getEvent_end());
+
+                        long diffrentTimeinMillis = obj.printDifferenceLong(current, end);
+                        //Start the countdown timer, reduce 1 sec (1000 millis) periodically
+                        if (mTimer == null) {
+                            mTimer = new CountDownTimer(diffrentTimeinMillis, 1000) {
+                                //                            DecimalFormat df = new DecimalFormat("#00");
+                                public void onTick(long millisUntilFinished) {
+                                    event3in30btn.setText(obj.printDifferenceInMillis(millisUntilFinished));
+                                    //If less than 10 days left
+                                    if (millisUntilFinished < 864000000) {
+                                        //Log.i(GeneralConstants.TAG, "less than 10 days");
+                                        event3in30btn.setBackgroundResource(R.drawable.red_rounded_opacity);
+
+                                        if (scaleDown == null) {
+                                            scaleDown = ObjectAnimator.ofPropertyValuesHolder(
+                                                    event3in30btn,
+                                                    PropertyValuesHolder.ofFloat("scaleX", 1.1f),
+                                                    PropertyValuesHolder.ofFloat("scaleY", 1.1f));
+
+                                            scaleDown.setDuration(310);
+                                            scaleDown.setRepeatCount(ObjectAnimator.INFINITE);
+                                            scaleDown.setRepeatMode(ObjectAnimator.REVERSE);
+                                            scaleDown.start();
+                                        }
+                                    }
+                                    else {
+                                        event3in30btn.setBackgroundResource(R.drawable.black_rounded_opacity);
+                                    }
+                                }
+                                public void onFinish() {
+                                    event3in30btn.setText("00:00:00");
+                                }
+                            }.start();
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            @Override
+            public void notifyError(String requestType, VolleyError error) {
+                //Add action if error getting data
+            }
+        };
+    }
+    // <WAFI 02-10-18 add end>
 
 }

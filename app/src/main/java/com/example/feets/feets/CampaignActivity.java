@@ -1,12 +1,12 @@
 package com.example.feets.feets;
 
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.design.widget.TabItem;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.Window;
@@ -34,7 +34,6 @@ public class CampaignActivity extends AppCompatActivity {
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.setStatusBarColor(this.getResources().getColor(R.color.StartColor3in30));
         }
-
 
         mtoolbar = (Toolbar) findViewById(R.id.toolbar_campaign);
         mtoolbar.setTitle("Kick-Start Campaign");
@@ -90,5 +89,7 @@ public class CampaignActivity extends AppCompatActivity {
         onBackPressed();
         return true;
     }
+
+
 
 }

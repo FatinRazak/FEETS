@@ -79,6 +79,7 @@
                         android:text="@string/rank" />
 
                     <TextView
+                        android:id="@+id/tv_ranking_value"
                         style="@style/WhiteNumbersBoldWithOpaBlackBg"
                         android:layout_row="1"
                         android:layout_column="0"
@@ -130,12 +131,14 @@
                         android:text="@string/score" />
 
                     <TextView
+                        android:id="@+id/tv_score_value"
                         style="@style/WhiteNumbersBoldWithOpaBlackBg"
                         android:layout_row="1"
                         android:layout_column="2"
                         android:text="@string/seasonal_score" />
 
                     <TextView
+                        android:id="@+id/tv_booster_value"
                         style="@style/WhiteTextScoreRank"
                         android:layout_row="2"
                         android:layout_column="2"
