@@ -9,11 +9,11 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabItem;
 import android.support.design.widget.TabLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,9 +28,9 @@ import com.example.feets.feets.adapters.MainFragmentAdapter;
 import com.example.feets.feets.api.IResult;
 import com.example.feets.feets.api.VolleyService;
 import com.example.feets.feets.constants.ApiConstants;
-import com.example.feets.feets.constants.GeneralConstants;
 import com.example.feets.feets.entity.CampaignBanner;
-import com.example.feets.feets.ui.FlipAnimation;
+import com.example.feets.feets.utilities.FlipAnimation;
+import com.example.feets.feets.utilities.DateTimeUtils;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import org.json.JSONException;
@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
     private TabItem mtabFeed;
     private TabItem mtabAnnouncement;
     private ViewPager mviewPager;
-//    private TextView mCountDown;
 
     //Volley
     CampaignBanner campaignBanner;
@@ -70,27 +69,22 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-//                    mTextMessage.setText(R.string.title_home);
                     Toast.makeText(getBaseContext(), "Home!",
                             Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.navigation_highfive:
-//                    mTextMessage.setText(R.string.title_highfive);
                     Toast.makeText(getBaseContext(), "Highfive!",
                             Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.navigation_ting:
-//                    mTextMessage.setText(R.string.title_ting);
                     Toast.makeText(getBaseContext(), "T'ing!",
                             Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.navigation_feeters:
-//                    mTextMessage.setText(R.string.title_feeters);
                     Toast.makeText(getBaseContext(), "Feeters!",
                             Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.navigation_makanbuddy:
-//                    mTextMessage.setText(R.string.title_makanbuddy);
                     Toast.makeText(getBaseContext(), "Makan Buddy!",
                             Toast.LENGTH_SHORT).show();
                     return true;
@@ -129,10 +123,9 @@ public class MainActivity extends AppCompatActivity {
             Window window = this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(this.getResources().getColor(R.color.StartColor3in30Opacity));
+            window.setStatusBarColor(ContextCompat.getColor(this, R.color.StartColor3in30Opacity));
         }
 
-        // <WAFI 02-10-18 add start>
         // Volley init
         tvScoreValue = (TextView) findViewById(R.id.tv_score_value);
         tvRankingValue = (TextView) findViewById(R.id.tv_ranking_value);
@@ -140,11 +133,10 @@ public class MainActivity extends AppCompatActivity {
         event3in30btn = (TextView) findViewById(R.id.event3in30);
         setDefaultBannerValue();
         initVolleyCallback();
-        // <WAFI 02-10-18 add end>
 
         mTextMessage = (TextView) findViewById(R.id.message);
-//        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-//        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        //BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        //navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         BottomNavigationViewEx bnve = (BottomNavigationViewEx) findViewById(R.id.navigation);
         bnve.enableAnimation(false);
         bnve.enableShiftingMode(false);
@@ -157,19 +149,18 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setOnMenuItemClickListener(mMenuItemClickListener);
 
 
-        toolbar.setOnClickListener(new View.OnClickListener() {
+/*        toolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.i(GeneralConstants.TAG, "click");
             }
-        });
+        });*/
 
 
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
-//        event3in30btn = (TextView) findViewById(R.id.event3in30);
         event3in30btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -214,24 +205,23 @@ public class MainActivity extends AppCompatActivity {
         mviewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mtabLayout));
 
         mtabLayout.addOnTabSelectedListener(new
-                                                    TabLayout.OnTabSelectedListener() {
-                                                        @Override
-                                                        public void onTabSelected(TabLayout.Tab tab) {
-                                                            mviewPager.setCurrentItem(tab.getPosition());
-                                                        }
+            TabLayout.OnTabSelectedListener() {
+                @Override
+                public void onTabSelected(TabLayout.Tab tab) {
+                    mviewPager.setCurrentItem(tab.getPosition());
+                }
 
-                                                        @Override
-                                                        public void onTabUnselected(TabLayout.Tab tab) {
+                @Override
+                public void onTabUnselected(TabLayout.Tab tab) {
 
-                                                        }
+                }
 
-                                                        @Override
-                                                        public void onTabReselected(TabLayout.Tab tab) {
+                @Override
+                public void onTabReselected(TabLayout.Tab tab) {
 
-                                                        }
-                                                    });
+                }
+            });
 
-        //Count Down - Move to bottom
 
     }
 
@@ -269,12 +259,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        // Inflate the menu, this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.activity_main_toolbar, menu);
         return true;
     }
 
-    // <WAFI 02-10-18 add start>
     /**
      * This method will set the rank, score and booster & time text to its default value.
      */
@@ -324,6 +313,7 @@ public class MainActivity extends AppCompatActivity {
 
                         long diffrentTimeinMillis = obj.printDifferenceLong(current, end);
                         //Start the countdown timer, reduce 1 sec (1000 millis) periodically
+
                         if (mTimer == null) {
                             mTimer = new CountDownTimer(diffrentTimeinMillis, 1000) {
                                 //                            DecimalFormat df = new DecimalFormat("#00");

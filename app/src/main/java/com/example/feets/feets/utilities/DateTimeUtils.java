@@ -1,4 +1,4 @@
-package com.example.feets.feets;
+package com.example.feets.feets.utilities;
 
 import android.annotation.SuppressLint;
 

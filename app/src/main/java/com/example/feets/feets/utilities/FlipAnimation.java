@@ -1,4 +1,4 @@
-package com.example.feets.feets.ui;
+package com.example.feets.feets.utilities;
 
 import android.graphics.Camera;
 import android.graphics.Matrix;
